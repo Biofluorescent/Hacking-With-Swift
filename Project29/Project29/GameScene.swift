@@ -81,9 +81,64 @@ class GameScene: SKScene {
         addChild(player2)
     }
     
+    func deg2rad(degrees: Int) -> Double {
+        return Double(degrees) * Double.pi / 180.00
+    }
+    
     
     func launch(angle: Int, velocity: Int){
+        //1. How hard to throw banana
+        let speed = Double(velocity) / 10.0
         
+        //2. Convert input angle to radians
+        let radians = deg2rad(degrees: angle)
+        
+        //3. Remove old and create new banana
+        if banana != nil {
+            banana.removeFromParent()
+            banana = nil
+        }
+        
+        banana = SKSpriteNode(imageNamed: "banana")
+        banana.name = "banana"
+        banana.physicsBody = SKPhysicsBody(circleOfRadius: banana.size.width / 2)
+        banana.physicsBody?.categoryBitMask = CollisionTypes.banana.rawValue
+        banana.physicsBody?.collisionBitMask = CollisionTypes.building.rawValue | CollisionTypes.player.rawValue
+        banana.physicsBody?.contactTestBitMask = CollisionTypes.building.rawValue | CollisionTypes.player.rawValue
+        banana.physicsBody?.usesPreciseCollisionDetection = true
+        addChild(banana)
+        
+        if currentPlayer == 1 {
+            //4. Position banana up/left of player 1
+            banana.position = CGPoint(x: player1.position.x - 30, y: player1.position.y + 40)
+            banana.physicsBody?.angularVelocity = -20
+            
+            //5. Animate player 1 throw
+            let raiseArm = SKAction.setTexture(SKTexture(imageNamed: "player1Throw"))
+            let lowerArm = SKAction.setTexture(SKTexture(imageNamed: "player"))
+            let pause = SKAction.wait(forDuration: 0.15)
+            let sequence = SKAction.sequence([raiseArm, pause, lowerArm])
+            player1.run(sequence)
+            
+            //6. Banana move in correct direction
+            let impulse = CGVector(dx: cos(radians) * speed, dy: sin(radians) * speed)
+            banana.physicsBody?.applyImpulse(impulse)
+            
+        } else{
+            //7. Position banana up/right of player 2
+            banana.position = CGPoint(x: player2.position.x - 30, y: player2.position.y + 40)
+            banana.physicsBody?.angularVelocity = 20
+            
+            let raiseArm = SKAction.setTexture(SKTexture(imageNamed: "player2Throw"))
+            let lowerArm = SKAction.setTexture(SKTexture(imageNamed: "player"))
+            let pause = SKAction.wait(forDuration: 0.15)
+            let sequence = SKAction.sequence([raiseArm, pause, lowerArm])
+            player2.run(sequence)
+            
+            let impulse = CGVector(dx: cos(radians) * -speed, dy: sin(radians) * speed)
+            banana.physicsBody?.applyImpulse(impulse)
+        }
+
     }
     
     
