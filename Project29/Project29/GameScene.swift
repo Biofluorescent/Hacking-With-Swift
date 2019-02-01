@@ -15,7 +15,7 @@ enum CollisionTypes: UInt32 {
     case player = 4
 }
 
-class GameScene: SKScene {
+class GameScene: SKScene, SKPhysicsContactDelegate {
     
     weak var viewController: GameViewController!
     
@@ -29,6 +29,8 @@ class GameScene: SKScene {
     
     override func didMove(to view: SKView) {
         backgroundColor = UIColor(hue: 0.669, saturation: 0.99, brightness: 0.67, alpha: 1)
+        
+        physicsWorld.contactDelegate = self
         
         createBuildings()
         createPlayers()
@@ -80,6 +82,89 @@ class GameScene: SKScene {
         player2.position = CGPoint(x: player2Building.position.x, y: player2Building.position.y + (player2Building.size.height + player2.size.height) / 2)
         addChild(player2)
     }
+    
+    
+    func didBegin(_ contact: SKPhysicsContact) {
+        //Lowest number collision type
+        var firstBody: SKPhysicsBody
+        //Highest number collision type
+        var secondBody: SKPhysicsBody
+        
+        if contact.bodyA.categoryBitMask < contact.bodyB.categoryBitMask {
+            firstBody = contact.bodyA
+            secondBody = contact.bodyB
+        } else {
+            firstBody = contact.bodyB
+            secondBody = contact.bodyA
+        }
+        
+        //If not nil
+        if let firstNode = firstBody.node {
+            if let secondNode = secondBody.node {
+                if firstNode.name == "banana" && secondNode.name == "building" {
+                    bananaHit(building: secondNode as! BuildingNode, atPoint: contact.contactPoint)
+                }
+                
+                if firstNode.name == "banana" && secondNode.name == "player1" {
+                    destroy(player: player1)
+                }
+                
+                if firstNode.name == "banana" && secondNode.name == "player2" {
+                    destroy(player: player2)
+                }
+            }
+        }
+        
+    }
+    
+    
+    func bananaHit(building: BuildingNode, atPoint contactPoint: CGPoint){
+        let buildingLocation = convert(contactPoint, to: building)
+        building.hitAt(point: buildingLocation)
+        
+        let explosion = SKEmitterNode(fileNamed: "hitBuilding")!
+        explosion.position = contactPoint
+        addChild(explosion)
+        
+        banana.name = ""
+        banana?.removeFromParent()
+        banana = nil
+        
+        changePlayer()
+    }
+    
+    
+    func changePlayer(){
+        currentPlayer = currentPlayer == 1 ? 2 : 1
+        viewController.activatePlayer(number: currentPlayer)
+    }
+    
+    
+    func destroy(player: SKSpriteNode){
+        let explosion = SKEmitterNode(fileNamed: "hitPlayer")!
+        explosion.position = player.position
+        addChild(explosion)
+        
+        player.removeFromParent()
+        banana?.removeFromParent()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            [unowned self] in
+            
+            let newGame = GameScene(size: self.size)
+            //Update viewController and scene to talk to each other in new game
+            newGame.viewController = self.viewController
+            self.viewController.currentGame = newGame
+            
+            self.changePlayer()
+            //Whoever lost moves first next game
+            newGame.currentPlayer = self.currentPlayer
+            
+            let transition = SKTransition.doorway(withDuration: 1.5)
+            self.view?.presentScene(newGame, transition: transition)
+        }
+    }
+    
     
     func deg2rad(degrees: Int) -> Double {
         return Double(degrees) * Double.pi / 180.00
@@ -142,13 +227,16 @@ class GameScene: SKScene {
     }
     
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-
-    }
-    
-    
     override func update(_ currentTime: TimeInterval) {
-        // Called before each frame is rendered
+        //If banana ever way off screen, remove it
+        if banana != nil {
+            if banana.position.y < -1000 {
+                banana.removeFromParent()
+                banana = nil
+                
+                changePlayer()
+            }
+        }
     }
     
     

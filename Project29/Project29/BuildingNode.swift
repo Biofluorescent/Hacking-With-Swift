@@ -79,4 +79,29 @@ class BuildingNode: SKSpriteNode {
     }
     
     
+    func hitAt(point: CGPoint){
+        //1. Building impact point
+        let convertedPoint = CGPoint(x: point.x + size.width / 2.0, y: abs(point.y - (size.height / 2.0)))
+        
+        //2. Create new context the size of sprite
+        let renderer = UIGraphicsImageRenderer(size: size)
+        let img = renderer.image { (ctx) in
+            //3. Draw currentImage into context
+            currentImage.draw(at: CGPoint(x: 0, y: 0))
+            
+            //4. Create ellipse at collision point
+            ctx.cgContext.addEllipse(in: CGRect(x: convertedPoint.x - 32, y: convertedPoint.y - 32, width: 64, height: 64))
+            //5. Blend mode to .clear
+            ctx.cgContext.setBlendMode(.clear)
+            ctx.cgContext.drawPath(using: .fill)
+        }
+        
+        //6. Save new image for next time building hit
+        texture = SKTexture(image: img)
+        currentImage = img
+        
+        //7. Recalculate per-pixel physics
+        configurePhysics()
+    }
+    
 }
