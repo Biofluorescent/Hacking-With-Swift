@@ -6,6 +6,7 @@
 //  Copyright © 2019 Tanner Quesenberry. All rights reserved.
 //
 
+import GameplayKit
 import UIKit
 
 class ViewController: UIViewController {
@@ -30,8 +31,9 @@ class ViewController: UIViewController {
         let column = sender.tag
         
         if let row = board.nextEmptySlot(in: column) {
-            board.add(chip: .red, in: column)
-            addChip(inColumn: column, row: row, color: .red)
+            board.add(chip: board.currentPlayer.chip, in: column)
+            addChip(inColumn: column, row: row, color: board.currentPlayer.color)
+            continueGame()
         }
         
     }
@@ -39,6 +41,7 @@ class ViewController: UIViewController {
     
     func resetBoard() {
         board = Board()
+        updateUI()
         
         for i in 0 ..< placedChips.count {
             for chip in placedChips[i] {
@@ -49,7 +52,7 @@ class ViewController: UIViewController {
         }
     }
     
-    //Matches boards add(chip:in) method
+    //Matches board's add(chip:in) method
     func addChip(inColumn column: Int, row: Int, color: UIColor) {
         let button = columnButtons[column]
         //Calculate size of chip
@@ -94,5 +97,39 @@ class ViewController: UIViewController {
     }
     
     
+    func updateUI() {
+        title = "\(board.currentPlayer.name)'s Turn"
+    }
+    
+    
+    //Called after every move, ends game if needed
+    func continueGame() {
+        //1. Optional game over string
+        var gameOverTitle: String? = nil
+        
+        //2. Update string if draw or winner
+        if board.isWin(for: board.currentPlayer) {
+            gameOverTitle = "\(board.currentPlayer.name) Wins!"
+        } else if board.isFull() {
+            gameOverTitle = "Draw!"
+        }
+        
+        //3. If game over, show alert and reset board
+        if gameOverTitle != nil {
+            let alert = UIAlertController(title: gameOverTitle, message: nil, preferredStyle: .alert)
+            let alertAction = UIAlertAction(title: "Play Again", style: .default) { [unowned self] (action) in
+                self.resetBoard()
+            }
+            
+            alert.addAction(alertAction)
+            present(alert, animated: true)
+            
+            return
+        }
+        
+        //4. Otherwise change players
+        board.currentPlayer = board.currentPlayer.opponent
+        updateUI()
+    }
 }
 
