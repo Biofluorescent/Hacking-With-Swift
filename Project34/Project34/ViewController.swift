@@ -15,9 +15,16 @@ class ViewController: UIViewController {
     var board: Board!
     var placedChips = [[UIView]]()
     
+    var strategist: GKMinmaxStrategist!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        strategist = GKMinmaxStrategist()
+        strategist.maxLookAheadDepth = 8
+        //For tiebreakers. Set to nil returns first best move.
+        //Could do randomly with: GKARC4RandomSource()
+        strategist.randomSource = nil
 
         for _ in 0 ..< Board.width {
             placedChips.append([UIView]())
@@ -38,9 +45,61 @@ class ViewController: UIViewController {
         
     }
     
+    //MARK: - AI methods
+    
+    //AI determines what move it will make. To be called on background thread
+    func columnForAIMove() -> Int? {
+        if let aiMove = strategist.bestMove(for: board.currentPlayer) as? Move {
+            return aiMove.column
+        }
+        
+        return nil
+    }
+    
+    //AI makes moves. To be called on background thread
+    func makeAIMove(in column: Int) {
+        //Enable user interaction, Stop AI "think" spinner
+        columnButtons.forEach { $0.isEnabled = true }
+        navigationItem.leftBarButtonItem = nil
+        
+        if let row = board.nextEmptySlot(in: column) {
+            board.add(chip: board.currentPlayer.chip, in: column)
+            addChip(inColumn: column, row: row, color: board.currentPlayer.color)
+            
+            continueGame()
+        }
+    }
+    
+    //Run AI move in background with 1sec delay
+    func startAIMove() {
+        //Disable player while AI "thinks"
+        columnButtons.forEach { $0.isEnabled = false }
+        //Let user know AI in progress
+        let spinner = UIActivityIndicatorView(style: .gray)
+        spinner.startAnimating()
+        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: spinner)
+        
+        DispatchQueue.global().async { [unowned self] in
+            let strategistTime = CFAbsoluteTimeGetCurrent()
+            guard let column = self.columnForAIMove() else { return }
+            let delta = CFAbsoluteTimeGetCurrent() - strategistTime
+            
+            let aiTimeCeiling = 1.0
+            let delay = aiTimeCeiling - delta
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + delay, execute: {
+                self.makeAIMove(in: column)
+            })
+        }
+    }
+    
+    //MARK: - Board UI methods
     
     func resetBoard() {
         board = Board()
+        //Feed new board to strategist so it stands ready to look for moves.
+        strategist.gameModel = board
         updateUI()
         
         for i in 0 ..< placedChips.count {
@@ -99,6 +158,10 @@ class ViewController: UIViewController {
     
     func updateUI() {
         title = "\(board.currentPlayer.name)'s Turn"
+        
+        if board.currentPlayer.chip == .black {
+            startAIMove()
+        }
     }
     
     
