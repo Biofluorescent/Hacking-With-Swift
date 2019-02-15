@@ -22,6 +22,7 @@
 		7B058F1522166A3400F32F0C /* PhantomFromSpace.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7B058F1322166A3400F32F0C /* PhantomFromSpace.mp3 */; };
 		7B058F1622166A3400F32F0C /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7B058F1422166A3400F32F0C /* README.txt */; };
 		7B058F1822166CB700F32F0C /* CardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B058F1722166CB700F32F0C /* CardViewController.swift */; };
+		7B058F1A2216890E00F32F0C /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B058F192216890E00F32F0C /* GradientView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +87,7 @@
 		7B058F1322166A3400F32F0C /* PhantomFromSpace.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = PhantomFromSpace.mp3; sourceTree = "<group>"; };
 		7B058F1422166A3400F32F0C /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
 		7B058F1722166CB700F32F0C /* CardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewController.swift; sourceTree = "<group>"; };
+		7B058F192216890E00F32F0C /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +134,7 @@
 				7B058EDB221669B800F32F0C /* AppDelegate.swift */,
 				7B058EDD221669B800F32F0C /* ViewController.swift */,
 				7B058F1722166CB700F32F0C /* CardViewController.swift */,
+				7B058F192216890E00F32F0C /* GradientView.swift */,
 				7B058EDF221669B800F32F0C /* Main.storyboard */,
 				7B058EE2221669BA00F32F0C /* Assets.xcassets */,
 				7B058EE4221669BA00F32F0C /* LaunchScreen.storyboard */,
@@ -307,6 +310,7 @@
 			files = (
 				7B058EDE221669B800F32F0C /* ViewController.swift in Sources */,
 				7B058EDC221669B800F32F0C /* AppDelegate.swift in Sources */,
+				7B058F1A2216890E00F32F0C /* GradientView.swift in Sources */,
 				7B058F1822166CB700F32F0C /* CardViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

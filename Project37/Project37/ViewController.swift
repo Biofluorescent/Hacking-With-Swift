@@ -11,13 +11,21 @@ import UIKit
 class ViewController: UIViewController {
 
     @IBOutlet var cardContainer: UIView!
+    @IBOutlet var gradientView: GradientView!
     
     var allCards = [CardViewController]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         loadCards()
+        
+        view.backgroundColor = UIColor.red
+        
+        UIView.animate(withDuration: 20, delay: 0, options: [.allowUserInteraction, .autoreverse, .repeat], animations: {
+            self.view.backgroundColor = UIColor.blue
+        })
+
     }
 
     @objc func loadCards() {
@@ -75,6 +83,28 @@ class ViewController: UIViewController {
             allCards.append(card)
         }
         
+        view.isUserInteractionEnabled = true
+        
+    }
+    
+    
+    func cardTapped(_ tapped: CardViewController) {
+        //Prevent two cards being tapped
+        guard view.isUserInteractionEnabled == true else { return }
+        view.isUserInteractionEnabled = false
+        
+        for card in allCards {
+            if card == tapped {
+                card.wasTapped()
+                card.perform(#selector(card.wasntTapped), with: nil, afterDelay: 1)
+            } else {
+                card.wasntTapped()
+            }
+        }
+        
+        //Perform exists on objects that inherit from NSObject.
+        //Allow to call function in background or after delay.
+        perform(#selector(loadCards), with: nil, afterDelay: 2)
     }
 
 }
