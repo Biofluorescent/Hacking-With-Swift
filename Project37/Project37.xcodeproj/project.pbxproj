@@ -21,6 +21,7 @@
 		7B058F03221669BB00F32F0C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7B058F02221669BB00F32F0C /* Assets.xcassets */; };
 		7B058F1522166A3400F32F0C /* PhantomFromSpace.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7B058F1322166A3400F32F0C /* PhantomFromSpace.mp3 */; };
 		7B058F1622166A3400F32F0C /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7B058F1422166A3400F32F0C /* README.txt */; };
+		7B058F1822166CB700F32F0C /* CardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B058F1722166CB700F32F0C /* CardViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +85,7 @@
 		7B058F04221669BB00F32F0C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7B058F1322166A3400F32F0C /* PhantomFromSpace.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = PhantomFromSpace.mp3; sourceTree = "<group>"; };
 		7B058F1422166A3400F32F0C /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
+		7B058F1722166CB700F32F0C /* CardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +131,7 @@
 			children = (
 				7B058EDB221669B800F32F0C /* AppDelegate.swift */,
 				7B058EDD221669B800F32F0C /* ViewController.swift */,
+				7B058F1722166CB700F32F0C /* CardViewController.swift */,
 				7B058EDF221669B800F32F0C /* Main.storyboard */,
 				7B058EE2221669BA00F32F0C /* Assets.xcassets */,
 				7B058EE4221669BA00F32F0C /* LaunchScreen.storyboard */,
@@ -304,6 +307,7 @@
 			files = (
 				7B058EDE221669B800F32F0C /* ViewController.swift in Sources */,
 				7B058EDC221669B800F32F0C /* AppDelegate.swift in Sources */,
+				7B058F1822166CB700F32F0C /* CardViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -480,6 +484,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5TJ75YJKFB;
 				INFOPLIST_FILE = "Project37 WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -501,6 +506,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5TJ75YJKFB;
 				INFOPLIST_FILE = "Project37 WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -523,6 +529,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5TJ75YJKFB;
 				IBSC_MODULE = Project37_WatchKit_Extension;
 				INFOPLIST_FILE = "Project37 WatchKit App/Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tannerquesenberry.Project37.watchkitapp;
@@ -541,6 +548,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5TJ75YJKFB;
 				IBSC_MODULE = Project37_WatchKit_Extension;
 				INFOPLIST_FILE = "Project37 WatchKit App/Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tannerquesenberry.Project37.watchkitapp;
@@ -558,6 +566,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5TJ75YJKFB;
 				INFOPLIST_FILE = Project37/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -575,6 +584,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5TJ75YJKFB;
 				INFOPLIST_FILE = Project37/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
