@@ -40,6 +40,8 @@ class CardViewController: UIViewController {
         let tap = UITapGestureRecognizer(target: self, action: #selector(cardTapped))
         back.isUserInteractionEnabled = true
         back.addGestureRecognizer(tap)
+        
+        perform(#selector(wiggle), with: nil, afterDelay: 1)
     }
     
     @objc func cardTapped() {
@@ -61,6 +63,22 @@ class CardViewController: UIViewController {
             self.back.isHidden = true
             self.front.isHidden = false
         })
+    }
+    
+    
+    @objc func wiggle() {
+        if Int.random(in: 0...3) == 1 {
+            UIView.animate(withDuration: 0.2, delay: 0, options: .allowUserInteraction, animations: {
+                self.back.transform = CGAffineTransform(scaleX: 1.01, y: 1.01)
+            }) { _ in
+                self.back.transform = CGAffineTransform.identity
+            }
+            
+            //Method calls itself so animation happens repeatedly
+            perform(#selector(wiggle), with: nil, afterDelay: 8)
+        } else {
+            perform(#selector(wiggle), with: nil, afterDelay: 2)
+        }
     }
     
     /*
