@@ -8,14 +8,17 @@
 
 import UIKit
 import AVFoundation
+import WatchConnectivity
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, WCSessionDelegate {
 
     @IBOutlet var cardContainer: UIView!
     @IBOutlet var gradientView: GradientView!
     
     var allCards = [CardViewController]()
     var music: AVAudioPlayer!
+    //Track when last messsage sent
+    var lastMessage: CFAbsoluteTime = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +32,13 @@ class ViewController: UIViewController {
         UIView.animate(withDuration: 20, delay: 0, options: [.allowUserInteraction, .autoreverse, .repeat], animations: {
             self.view.backgroundColor = UIColor.blue
         })
+        
+        if (WCSession.isSupported()) {
+            let session = WCSession.default
+            //Cannot call activate without a delegate even if we don't use any of the delegate methods
+            session.delegate = self
+            session.activate()
+        }
 
     }
     
@@ -45,6 +55,10 @@ class ViewController: UIViewController {
                         card.front.image = UIImage(named: "cardStar")
                         card.isCorrect = true
                     }
+                }
+                
+                if card.isCorrect {
+                    sendWatchMessage()
                 }
             }
         }
@@ -166,6 +180,52 @@ class ViewController: UIViewController {
         
         //Ensures stars always go behind the cards
         gradientView.layer.addSublayer(particleEmitter)
+    }
+    
+    
+    func sendWatchMessage() {
+        let currentTime = CFAbsoluteTimeGetCurrent()
+        
+        //if less than half a second has passed, bail
+        if lastMessage + 0.5 > currentTime {
+            return
+        }
+        
+        //send message if watch reachable
+        if (WCSession.default.isReachable) {
+            //meaningless message, but enough for purposes of this app
+            let message = ["Message": "Hello"]
+            WCSession.default.sendMessage(message, replyHandler: nil)
+        }
+        
+        //update rate limiting property
+        lastMessage = CFAbsoluteTimeGetCurrent()
+    }
+    
+    //Show user instructions every time app runs.
+    //Need in viewDidAppear rather than viewDidLoad because it presents an alert view controller.
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        let instructions = "Please ensure your Apple Watch is configured correctly. On your iPhone, launch Apple's 'Watch' configuration app then choose General > Wake Screen. On that screen, please disable Wake Screen On Wrist Raise, then select Wake For 70 Seconds. On your Apple Watch, please swipe up on your watch face and enable Silent Mode. You're done!"
+        let ac = UIAlertController(title: "Adjust your settings", message: instructions, preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "I'm Ready", style: .default))
+        present(ac, animated: true)
+    }
+    
+    
+    //MARK: - WCSession delegate methods, not needed in this app.
+    
+    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+        
+    }
+    
+    func sessionDidBecomeInactive(_ session: WCSession) {
+        
+    }
+    
+    func sessionDidDeactivate(_ session: WCSession) {
+        
     }
 }
 
