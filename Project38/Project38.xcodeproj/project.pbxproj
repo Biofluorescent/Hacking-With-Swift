@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		7B25AD16221B871200D9739D /* Commit+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B25AD14221B871200D9739D /* Commit+CoreDataClass.swift */; };
 		7B25AD17221B871200D9739D /* Commit+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B25AD15221B871200D9739D /* Commit+CoreDataProperties.swift */; };
+		7B25AD1A221D1FFC00D9739D /* Author+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B25AD18221D1FFC00D9739D /* Author+CoreDataClass.swift */; };
+		7B25AD1B221D1FFC00D9739D /* Author+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B25AD19221D1FFC00D9739D /* Author+CoreDataProperties.swift */; };
 		7B52ACE4221B47CE003024F3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B52ACE3221B47CE003024F3 /* AppDelegate.swift */; };
 		7B52ACE6221B47CE003024F3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B52ACE5221B47CE003024F3 /* ViewController.swift */; };
 		7B52ACE9221B47CE003024F3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B52ACE7221B47CE003024F3 /* Main.storyboard */; };
@@ -22,6 +24,8 @@
 /* Begin PBXFileReference section */
 		7B25AD14221B871200D9739D /* Commit+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Commit+CoreDataClass.swift"; sourceTree = "<group>"; };
 		7B25AD15221B871200D9739D /* Commit+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Commit+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		7B25AD18221D1FFC00D9739D /* Author+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Author+CoreDataClass.swift"; sourceTree = "<group>"; };
+		7B25AD19221D1FFC00D9739D /* Author+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Author+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		7B52ACE0221B47CE003024F3 /* Project38.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Project38.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B52ACE3221B47CE003024F3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7B52ACE5221B47CE003024F3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -64,6 +68,8 @@
 		7B52ACE2221B47CE003024F3 /* Project38 */ = {
 			isa = PBXGroup;
 			children = (
+				7B25AD18221D1FFC00D9739D /* Author+CoreDataClass.swift */,
+				7B25AD19221D1FFC00D9739D /* Author+CoreDataProperties.swift */,
 				7B25AD14221B871200D9739D /* Commit+CoreDataClass.swift */,
 				7B25AD15221B871200D9739D /* Commit+CoreDataProperties.swift */,
 				7B52ACE3221B47CE003024F3 /* AppDelegate.swift */,
@@ -152,8 +158,10 @@
 			files = (
 				7B25AD16221B871200D9739D /* Commit+CoreDataClass.swift in Sources */,
 				7BCEFEC2221B48FA00C73002 /* SwiftyJSON.swift in Sources */,
+				7B25AD1B221D1FFC00D9739D /* Author+CoreDataProperties.swift in Sources */,
 				7B25AD17221B871200D9739D /* Commit+CoreDataProperties.swift in Sources */,
 				7BCEFEC7221B7EE700C73002 /* Project38.xcdatamodeld in Sources */,
+				7B25AD1A221D1FFC00D9739D /* Author+CoreDataClass.swift in Sources */,
 				7B52ACE6221B47CE003024F3 /* ViewController.swift in Sources */,
 				7B52ACE4221B47CE003024F3 /* AppDelegate.swift in Sources */,
 				7BCEFEC4221B4A7400C73002 /* DetailViewController.swift in Sources */,

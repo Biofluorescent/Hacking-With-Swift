@@ -2,7 +2,7 @@
 //  Commit+CoreDataProperties.swift
 //  Project38
 //
-//  Created by Tanner Quesenberry on 2/18/19.
+//  Created by Tanner Quesenberry on 2/19/19.
 //  Copyright © 2019 Tanner Quesenberry. All rights reserved.
 //
 //
@@ -21,5 +21,6 @@ extension Commit {
     @NSManaged public var message: String
     @NSManaged public var sha: String
     @NSManaged public var url: String
+    @NSManaged public var author: Author
 
 }
