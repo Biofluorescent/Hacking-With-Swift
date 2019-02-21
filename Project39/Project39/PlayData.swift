@@ -10,7 +10,8 @@ import Foundation
 
 class PlayData {
     var allWords = [String]()
-    var wordCounts = [String: Int]()
+    //Items can only be added once but keeps track of # of times trying to add or remove item
+    var wordCounts: NSCountedSet!
     
     init() {
         if let path = Bundle.main.path(forResource: "plays", ofType: "txt") {
@@ -19,15 +20,11 @@ class PlayData {
                 allWords = plays.components(separatedBy: CharacterSet.alphanumerics.inverted)
                 allWords = allWords.filter { $0 != "" }
                 
-                for word in allWords {
-                    if wordCounts[word] == nil {
-                        wordCounts[word] = 1
-                    } else {
-                        wordCounts[word]! += 1
-                    }
-                }
-                
-                allWords = Array(wordCounts.keys)
+                //Create counted set
+                wordCounts = NSCountedSet(array: allWords)
+                //$0 is first word in comparison. Return true ("sort before") if count of first word greater than second
+                let sorted = wordCounts.allObjects.sorted { wordCounts.count(for: $0) > wordCounts.count(for: $1)}
+                allWords = sorted as! [String]
             }
         }
     }
