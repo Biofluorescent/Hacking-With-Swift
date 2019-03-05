@@ -22,7 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		7BF8487F220D2AB200D6EA41 /* Project36.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Project36.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7BF8487F220D2AB200D6EA41 /* Crashy Plane.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Crashy Plane.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BF84882220D2AB200D6EA41 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7BF84884220D2AB200D6EA41 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		7BF84888220D2AB200D6EA41 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
@@ -52,7 +52,7 @@
 		7BF84876220D2AB200D6EA41 = {
 			isa = PBXGroup;
 			children = (
-				7BF84881220D2AB200D6EA41 /* Project36 */,
+				7BF84881220D2AB200D6EA41 /* Crashy Plane */,
 				7BF84880220D2AB200D6EA41 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -60,12 +60,12 @@
 		7BF84880220D2AB200D6EA41 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				7BF8487F220D2AB200D6EA41 /* Project36.app */,
+				7BF8487F220D2AB200D6EA41 /* Crashy Plane.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		7BF84881220D2AB200D6EA41 /* Project36 */ = {
+		7BF84881220D2AB200D6EA41 /* Crashy Plane */ = {
 			isa = PBXGroup;
 			children = (
 				7BF8489A220D2BB600D6EA41 /* Content */,
@@ -78,7 +78,7 @@
 				7BF84891220D2AB200D6EA41 /* LaunchScreen.storyboard */,
 				7BF84894220D2AB200D6EA41 /* Info.plist */,
 			);
-			path = Project36;
+			path = "Crashy Plane";
 			sourceTree = "<group>";
 		};
 		7BF8489A220D2BB600D6EA41 /* Content */ = {
@@ -96,9 +96,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		7BF8487E220D2AB200D6EA41 /* Project36 */ = {
+		7BF8487E220D2AB200D6EA41 /* Crashy Plane */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7BF84897220D2AB200D6EA41 /* Build configuration list for PBXNativeTarget "Project36" */;
+			buildConfigurationList = 7BF84897220D2AB200D6EA41 /* Build configuration list for PBXNativeTarget "Crashy Plane" */;
 			buildPhases = (
 				7BF8487B220D2AB200D6EA41 /* Sources */,
 				7BF8487C220D2AB200D6EA41 /* Frameworks */,
@@ -108,9 +108,9 @@
 			);
 			dependencies = (
 			);
-			name = Project36;
+			name = "Crashy Plane";
 			productName = Project36;
-			productReference = 7BF8487F220D2AB200D6EA41 /* Project36.app */;
+			productReference = 7BF8487F220D2AB200D6EA41 /* Crashy Plane.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -128,7 +128,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 7BF8487A220D2AB200D6EA41 /* Build configuration list for PBXProject "Project36" */;
+			buildConfigurationList = 7BF8487A220D2AB200D6EA41 /* Build configuration list for PBXProject "Crashy Plane" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -141,7 +141,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				7BF8487E220D2AB200D6EA41 /* Project36 */,
+				7BF8487E220D2AB200D6EA41 /* Crashy Plane */,
 			);
 		};
 /* End PBXProject section */
@@ -320,12 +320,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5TJ75YJKFB;
-				INFOPLIST_FILE = Project36/Info.plist;
+				INFOPLIST_FILE = "Crashy Plane/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.tannerquesenberry.Project36;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.tannerquesenberry.Crashy-Plane";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -338,12 +338,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5TJ75YJKFB;
-				INFOPLIST_FILE = Project36/Info.plist;
+				INFOPLIST_FILE = "Crashy Plane/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.tannerquesenberry.Project36;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.tannerquesenberry.Crashy-Plane";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -353,7 +353,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		7BF8487A220D2AB200D6EA41 /* Build configuration list for PBXProject "Project36" */ = {
+		7BF8487A220D2AB200D6EA41 /* Build configuration list for PBXProject "Crashy Plane" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7BF84895220D2AB200D6EA41 /* Debug */,
@@ -362,7 +362,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7BF84897220D2AB200D6EA41 /* Build configuration list for PBXNativeTarget "Project36" */ = {
+		7BF84897220D2AB200D6EA41 /* Build configuration list for PBXNativeTarget "Crashy Plane" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7BF84898220D2AB200D6EA41 /* Debug */,
