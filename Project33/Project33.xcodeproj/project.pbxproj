@@ -13,6 +13,8 @@
 		7B5B453622601F4A00294870 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7B5B453522601F4A00294870 /* Assets.xcassets */; };
 		7B5B453922601F4A00294870 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B5B453722601F4A00294870 /* LaunchScreen.storyboard */; };
 		7B5B45412260214600294870 /* RecordWhistleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5B45402260214600294870 /* RecordWhistleViewController.swift */; };
+		7B5B454322667FF000294870 /* SelectGenreTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5B454222667FF000294870 /* SelectGenreTableViewController.swift */; };
+		7B5B4545226682A600294870 /* AddCommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5B4544226682A600294870 /* AddCommentsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		7B5B453822601F4A00294870 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7B5B453A22601F4A00294870 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7B5B45402260214600294870 /* RecordWhistleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordWhistleViewController.swift; sourceTree = "<group>"; };
+		7B5B454222667FF000294870 /* SelectGenreTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectGenreTableViewController.swift; sourceTree = "<group>"; };
+		7B5B4544226682A600294870 /* AddCommentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCommentsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +63,8 @@
 				7B5B452E22601F4800294870 /* AppDelegate.swift */,
 				7B5B453022601F4800294870 /* ViewController.swift */,
 				7B5B45402260214600294870 /* RecordWhistleViewController.swift */,
+				7B5B4544226682A600294870 /* AddCommentsViewController.swift */,
+				7B5B454222667FF000294870 /* SelectGenreTableViewController.swift */,
 				7B5B453222601F4800294870 /* Main.storyboard */,
 				7B5B453522601F4A00294870 /* Assets.xcassets */,
 				7B5B453722601F4A00294870 /* LaunchScreen.storyboard */,
@@ -139,8 +145,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				7B5B453122601F4800294870 /* ViewController.swift in Sources */,
+				7B5B4545226682A600294870 /* AddCommentsViewController.swift in Sources */,
 				7B5B452F22601F4800294870 /* AppDelegate.swift in Sources */,
 				7B5B45412260214600294870 /* RecordWhistleViewController.swift in Sources */,
+				7B5B454322667FF000294870 /* SelectGenreTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
