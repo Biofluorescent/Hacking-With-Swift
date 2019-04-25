@@ -22,6 +22,7 @@ class ViewController: UITableViewController {
         title = "What's that Whistle?"
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addWhistle))
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "Home", style: .plain, target: nil, action: nil)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Genres", style: .plain, target: self, action: #selector(selectGenre))
         
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
     }
@@ -37,6 +38,11 @@ class ViewController: UITableViewController {
         if ViewController.isDirty {
             loadWhistles()
         }
+    }
+    
+    @objc func selectGenre() {
+        let vc = MyGenresViewController()
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     //MARK: - Tableview delegate methods
